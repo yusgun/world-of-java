@@ -21,4 +21,11 @@ public class Monstre extends Combattant {
 		super(pointDeVie, degat, nom);
 	}
 	
+	/**
+	 * Méthode toString
+	 * @return Affichage des attributs du monstre
+	 */
+	public String toString() {
+		return super.toString();
+	}
 }

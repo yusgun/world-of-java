@@ -2,6 +2,30 @@ import java.util.Scanner;
 
 public class Monde {
 	
+	// Nom
+	public static String[] debutNom = {"ane", "baleine", "belette", "blaireau", "buffle", "bison", "cerf", "castor", "chacal", "chameau"};
+	public static String[] finNom = {" mechant", " de feu", " de la mort", " demoniaque", " sarcastique", " satanique", " desespere", " luciferien", " malefique", " diabolique"};
+	
+	/**
+	 * Générer un nom via la saisie de l'utilisateur au clavier
+	 * @return nom généré
+	 */
+	public static String genererNom() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Definir le nom: ");
+		return scanner.next();
+	}
+	
+	/**
+	 * Génère un nombre au hasard entre [min, max]
+	 * @param min nombre mini
+	 * @param max nombre maxi
+	 * @return nombre généré
+	 */
+	public static int randomInt(int min, int max) {
+		return (int)(Math.random() * ((max - min) + 1)) + min;
+	}
+	
 	/**
 	 * Créer un personnage avec tous ses attributs. 
 	 * Demande a l'utilisateur d'entrer le nom du personnage.
@@ -10,15 +34,28 @@ public class Monde {
 	 */
 	public static Personnage personnageFactory(){
 	    // Demander a l'utilisateur un nom de personnage
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Definir le nom du personnage: ");
-		String nom = scanner.nextLine();
-		int degat = 20;
-		int pointDeVie = 30;
+		String nom = genererNom();
+		int degat = 2;
+		int pointDeVie = 20;
 	    // Creer un nouveau personnage en utilisant le constructeur avec tous ses params (dont le nom qui vient d'être choisi par l'utilisateur)
 		Personnage personnage = new Personnage(pointDeVie, degat, nom);
 	    // Retourner l'instance du personnage
 		return personnage;
+	}
+	
+	/**
+	 * Créer un personnage avec tous ses attributs. 
+	 * @return le Monstre crée
+	 */
+	public static Monstre MonstreFactory() {
+	    // Creer un string pour le nom de votre monstre
+		String nom = debutNom[randomInt(0, debutNom.length-1)] + finNom[randomInt(0, finNom.length-1)];
+		int degat = 2;
+		int pointDeVie = 20;
+	    // Creer une instance Monstre avec sont constructeur complet
+		Monstre monstre = new Monstre(pointDeVie, degat, nom);
+	    // retourner le monstre
+		return monstre;
 	}
 
 	/**
