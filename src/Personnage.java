@@ -26,6 +26,10 @@ public class Personnage {
 	}
 
 	@Override
+	/**
+	 * Méthode toString
+	 * @return Affichage des attributs du personnage
+	 */
 	public String toString() {
 		return "nom:["+this.nom+"], pointDeVie:["+this.pointDeVie+"], attaque:["+this.degat+"]";
 	}
