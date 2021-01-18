@@ -2,7 +2,7 @@
  * Classe représentant un personnage
  * @author yusuf
  */
-public class Personnage extends Combattant{
+public class Personnage extends AbstractCombattant {
 	
 	/**
 	 * Constructeur vide
@@ -26,5 +26,15 @@ public class Personnage extends Combattant{
 	 */
 	public String toString() {
 		return super.toString();
+	}
+
+	@Override
+	public void attaquer(ICombattant adversaire) {
+		super.attaquer(adversaire);
+	}
+
+	@Override
+	public void defendre(int degats) {
+		super.defendre(degats);
 	}
 }

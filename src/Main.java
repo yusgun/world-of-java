@@ -1,5 +1,8 @@
-import java.util.Scanner;
-
+/**
+ * Méthode Main
+ * @author yusuf
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {

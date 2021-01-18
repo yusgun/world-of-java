@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class Monde {
 	
 	// Nom
@@ -72,15 +71,16 @@ public class Monde {
 	 */
 	public static void combat(Personnage personnage, Monstre monstre) {
 		// Système de tour : si nombre impair Monstre / si nombre pair Personnage
+		System.out.println("-----Debut de partie-----");
 		while(personnage.estVivant() && monstre.estVivant()) {
 			int i = randomInt(0, 1);
 			if(i == 0) { // Au tour du Monstre
-				personnage.pointDeVie -= monstre.degat;
-				System.out.println("Le monstre "+ monstre.nom +" attaque, et retire "+ monstre.degat +" pts de vie, il reste "+ personnage.pointDeVie +" pts de vie a "+ personnage.nom);
+				monstre.attaquer(personnage);
 			} else { // Au tour du Personnage
-				monstre.pointDeVie -= personnage.degat;
-				System.out.println("Le personnage "+ personnage.nom +" attaque, et retire "+ personnage.degat +" pts de vie, il reste "+ monstre.pointDeVie +" pts de vie a "+ monstre.nom);
+				personnage.attaquer(monstre);
 			}
 		}
+		System.out.println("-----Fin de partie-----");
+		System.out.println("Score { " + personnage.getNom() +":["+personnage.getPointDeVie()+"] | "+monstre.getNom()+":["+monstre.getPointDeVie()+"] }");
 	}
 }

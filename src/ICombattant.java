@@ -4,7 +4,7 @@
  */
 public interface ICombattant {
 	public void attaquer(ICombattant adversaire);
-	public void defender(int degats);
+	public void defendre(int degats);
 	
 	// Getters et setters
 	public String getNom();

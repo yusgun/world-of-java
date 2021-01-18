@@ -2,7 +2,7 @@
  * Classe représentant un Monstre
  * @author yusuf
  */
-public class Monstre extends Combattant {
+public class Monstre extends AbstractCombattant {
 
 	/**
 	 * Constructeur vide
@@ -27,5 +27,15 @@ public class Monstre extends Combattant {
 	 */
 	public String toString() {
 		return super.toString();
+	}
+
+	@Override
+	public void attaquer(ICombattant adversaire) {
+		super.attaquer(adversaire);
+	}
+
+	@Override
+	public void defendre(int degats) {
+		super.defendre(degats);
 	}
 }
