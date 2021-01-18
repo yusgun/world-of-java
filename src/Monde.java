@@ -20,4 +20,12 @@ public class Monde {
 	    // Retourner l'instance du personnage
 		return personnage;
 	}
+
+	/**
+	 * Cette méthode affiche les informations du monde
+	 */
+	public static void afficherInformations() {
+		System.out.println(personnageFactory());
+	}
+
 }
