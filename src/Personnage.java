@@ -2,11 +2,7 @@
  * Classe représentant un personnage
  * @author yusuf
  */
-public class Personnage {
-	// attributs de la classe
-	private int pointDeVie;
-	private int degat;
-	private String nom;
+public class Personnage extends Combattant{
 	
 	/**
 	 * Constructeur vide
@@ -20,9 +16,7 @@ public class Personnage {
 	 * @param nom - Nom du personnage
 	 */
 	public Personnage(int pointDeVie, int degat, String nom) {
-		this.pointDeVie = pointDeVie;
-		this.degat = degat;
-		this.nom = nom;
+		super(pointDeVie, degat, nom);
 	}
 
 	@Override
@@ -31,9 +25,6 @@ public class Personnage {
 	 * @return Affichage des attributs du personnage
 	 */
 	public String toString() {
-		return "nom:["+this.nom+"], pointDeVie:["+this.pointDeVie+"], attaque:["+this.degat+"]";
+		return super.toString();
 	}
-	
-	
-
 }
