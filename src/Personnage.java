@@ -24,4 +24,12 @@ public class Personnage {
 		this.degat = degat;
 		this.nom = nom;
 	}
+
+	@Override
+	public String toString() {
+		return "nom:["+this.nom+"], pointDeVie:["+this.pointDeVie+"], attaque:["+this.degat+"]";
+	}
+	
+	
+
 }
