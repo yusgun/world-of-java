@@ -1,10 +1,15 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Scanner;
+
+import javax.sound.sampled.AudioFileFormat;
+
 public class Monde {
 	
 	// Nom
+	public static Hashtable<String, Classe> dictionnaires = new Hashtable<String, Classe>() {{ put("saiyen", new Classe("saiyen", Arrays.asList(new BasicAttaque("BigBang", "", 2, 90), new BasicAttaque("Kamehameha", "", 4, 65), new BasicAttaque("Genkidama", "", 15, 20)))); put("terrien", new Classe("terrien", Arrays.asList(new BasicAttaque("Boule de feu", "", 2, 90), new BasicAttaque("Kamehameha", "", 4, 65))));  }};
 	public static String[] debutNom = {"Ane", "Baleine", "Belette", "Blaireau", "Buffle", "Bison", "Cerf", "Castor", "Chacal", "Chameau"};
 	public static String[] finNom = {" mechant", " de feu", " de la mort", " demoniaque", " sarcastique", " satanique", " desespere", " luciferien", " malefique", " diabolique"};
 	
@@ -12,9 +17,9 @@ public class Monde {
 	 * Générer un nom via la saisie de l'utilisateur au clavier
 	 * @return nom généré
 	 */
-	public static String genererNom() {
+	public static String generer(String nom) {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Definir le nom: ");
+		System.out.println("Definir "+ nom +": ");
 		return scanner.next();
 	}
 	
@@ -26,11 +31,15 @@ public class Monde {
 	 */
 	public static Personnage personnageFactory(){
 	    // Demander a l'utilisateur un nom de personnage
-		String nom = genererNom();
+		String nom = generer("nom");
+		String race = generer("race");
+		Classe classe = getClasse(race);
+		if(classe == null) {
+			return null;
+		}
 		int degat = 2;
 		int pointDeVie = 20;
 		List<IAttaque> attaques = Arrays.asList(new BasicAttaque("BigBang", "", 2, 90), new BasicAttaque("Kamehameha", "", 4, 65), new BasicAttaque("Genkidama", "", 15, 20));
-		Classe classe = new Classe("Classe", attaques);
 	    // Creer un nouveau personnage en utilisant le constructeur avec tous ses params (dont le nom qui vient d'être choisi par l'utilisateur)
 		Personnage personnage = new Personnage(pointDeVie, degat, nom, classe);
 	    // Retourner l'instance du personnage
@@ -77,5 +86,9 @@ public class Monde {
 		}
 		System.out.println("-----Fin de partie-----");
 		System.out.println("Score { " + personnage.getNom() +":["+personnage.getPointDeVie()+"] | "+monstre.getNom()+":["+monstre.getPointDeVie()+"] }");
+	}
+	
+	public static Classe getClasse(String nom) {
+		return dictionnaires.get(nom);
 	}
 }
