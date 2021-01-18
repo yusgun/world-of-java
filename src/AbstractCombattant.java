@@ -31,7 +31,7 @@ public abstract class AbstractCombattant implements ICombattant {
 	 */
 	public void attaquer(ICombattant adversaire) {
 		adversaire.defendre(this.degat);
-		System.out.println("Le combattant "+ this.getNom() +" attaque, et retire "+ this.getPointDeVie() +" pts de vie, il reste "+ adversaire.getPointDeVie() +" pts de vie a "+ adversaire.getNom());
+		System.out.println("Le combattant "+ this.nom +" attaque, et retire "+ this.degat +" pts de vie");
 	}
 	
 	/**
@@ -40,6 +40,9 @@ public abstract class AbstractCombattant implements ICombattant {
 	 */
 	public void defendre(int degats) {
 		this.setPointDeVie(this.getPointDeVie()-degats);
+		if(degats > 0) {
+			System.out.println("Il reste "+ this.pointDeVie + " pts de vie a "+ this.nom);
+		}
 	}
 	
 	/**

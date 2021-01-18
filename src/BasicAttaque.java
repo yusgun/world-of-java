@@ -36,10 +36,10 @@ public class BasicAttaque implements IAttaque{
 		if(random < this.chanceToucher) {
 	        // retourner lanceur.Degats
 			result = this.degats;
-			System.out.println("Le combattant "+ lanceur.getNom() +" attaque utilise "+this.nom+", et retire "+ this.degats +" pts de vie, il reste "+ cible.getPointDeVie() +" pts de vie a "+ cible.getNom());
+			System.out.println("Le combattant "+ lanceur.getNom() +" attaque utilise "+ this.nom +", et retire "+ this.degats +" pts de vie, il reste "+ cible.getPointDeVie() +" pts de vie a "+ cible.getNom());
 		} else {
 			// sinon renvoyer 0 et afficher un message d'echec
-			System.out.println("Echec de l'attaque de " + lanceur.getNom());
+			System.out.println("Echec de l'attaque "+ this.nom +" de " + lanceur.getNom());
 		}
 		return result;
 	}

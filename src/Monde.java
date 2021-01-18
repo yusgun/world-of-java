@@ -29,7 +29,7 @@ public class Monde {
 		String nom = genererNom();
 		int degat = 2;
 		int pointDeVie = 20;
-		List<IAttaque> attaques = Arrays.asList(new BasicAttaque("BigBang", "", 2, 30), new BasicAttaque("Kamehameha", "", 4, 65), new BasicAttaque("Genkidama", "", 15, 90));
+		List<IAttaque> attaques = Arrays.asList(new BasicAttaque("BigBang", "", 2, 90), new BasicAttaque("Kamehameha", "", 4, 65), new BasicAttaque("Genkidama", "", 15, 20));
 		Classe classe = new Classe("Classe", attaques);
 	    // Creer un nouveau personnage en utilisant le constructeur avec tous ses params (dont le nom qui vient d'être choisi par l'utilisateur)
 		Personnage personnage = new Personnage(pointDeVie, degat, nom, classe);
