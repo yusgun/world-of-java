@@ -1,3 +1,4 @@
+import org.w3c.dom.html.HTMLIsIndexElement;
 
 public class BasicAttaque implements IAttaque{
 	
@@ -34,7 +35,8 @@ public class BasicAttaque implements IAttaque{
 	    // si random < chanceToucher
 		if(random < this.chanceToucher) {
 	        // retourner lanceur.Degats
-			result = lanceur.getDegat();
+			result = this.degats;
+			System.out.println("Le combattant "+ lanceur.getNom() +" attaque utilise "+this.nom+", et retire "+ this.degats +" pts de vie, il reste "+ cible.getPointDeVie() +" pts de vie a "+ cible.getNom());
 		} else {
 			// sinon renvoyer 0 et afficher un message d'echec
 			System.out.println("Echec de l'attaque de " + lanceur.getNom());

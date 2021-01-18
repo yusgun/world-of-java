@@ -4,6 +4,8 @@
  */
 public class Personnage extends AbstractCombattant {
 	
+	private Classe classe;
+	
 	/**
 	 * Constructeur vide
 	 */
@@ -15,8 +17,9 @@ public class Personnage extends AbstractCombattant {
 	 * @param degat - Nombre de dégât que le personnage peut envoyer
 	 * @param nom - Nom du personnage
 	 */
-	public Personnage(int pointDeVie, int degat, String nom) {
+	public Personnage(int pointDeVie, int degat, String nom, Classe classe) {
 		super(pointDeVie, degat, nom);
+		this.classe = classe;
 	}
 
 	@Override
@@ -28,13 +31,29 @@ public class Personnage extends AbstractCombattant {
 		return super.toString();
 	}
 
+	/**
+	 * Méthode permettant au personnage d'attaquer son adversaire
+	 * @param adversaire - Advseraire à attaquer
+	 */
 	@Override
 	public void attaquer(ICombattant adversaire) {
-		super.attaquer(adversaire);
+		int attaque = this.classe.getAttaque().lancerAttaque(this, adversaire);
+		adversaire.defendre(attaque);
 	}
 
+	/**
+	 * Méthode permettant au personnage de défendre
+	 */
 	@Override
 	public void defendre(int degats) {
 		super.defendre(degats);
+	}
+
+	public Classe getClasse() {
+		return classe;
+	}
+
+	public void setClasse(Classe classe) {
+		this.classe = classe;
 	}
 }

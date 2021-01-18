@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 public class Monde {
 	
@@ -26,8 +29,10 @@ public class Monde {
 		String nom = genererNom();
 		int degat = 2;
 		int pointDeVie = 20;
+		List<IAttaque> attaques = Arrays.asList(new BasicAttaque("BigBang", "", 2, 30), new BasicAttaque("Kamehameha", "", 4, 65), new BasicAttaque("Genkidama", "", 15, 90));
+		Classe classe = new Classe("Classe", attaques);
 	    // Creer un nouveau personnage en utilisant le constructeur avec tous ses params (dont le nom qui vient d'être choisi par l'utilisateur)
-		Personnage personnage = new Personnage(pointDeVie, degat, nom);
+		Personnage personnage = new Personnage(pointDeVie, degat, nom, classe);
 	    // Retourner l'instance du personnage
 		return personnage;
 	}
@@ -63,7 +68,7 @@ public class Monde {
 		// Système de tour : si nombre impair Monstre / si nombre pair Personnage
 		System.out.println("-----Debut de partie-----");
 		while(personnage.estVivant() && monstre.estVivant()) {
-			int i = randomInt(0, 1);
+			int i = Random.randomInt(0, 1);
 			if(i == 0) { // Au tour du Monstre
 				monstre.attaquer(personnage);
 			} else { // Au tour du Personnage
