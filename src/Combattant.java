@@ -24,7 +24,16 @@ public abstract class Combattant {
 		this.degat = degat;
 		this.nom = nom;
 	}
-
+	
+	/**
+	 * Cette méthode permet de savoir si un personnage est vivant
+	 * @param combattant - Combattant à vérifier
+	 * @return vrai s'il est vivant
+	 */
+	public boolean estVivant() {
+		return this.pointDeVie > 0;
+	}
+	
 	@Override
 	public String toString() {
 		return "nom:["+this.nom+"], pointDeVie:["+this.pointDeVie+"], attaque:["+this.degat+"]";

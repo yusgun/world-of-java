@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Monde {
 	
 	// Nom
-	public static String[] debutNom = {"ane", "baleine", "belette", "blaireau", "buffle", "bison", "cerf", "castor", "chacal", "chameau"};
+	public static String[] debutNom = {"Ane", "Baleine", "Belette", "Blaireau", "Buffle", "Bison", "Cerf", "Castor", "Chacal", "Chameau"};
 	public static String[] finNom = {" mechant", " de feu", " de la mort", " demoniaque", " sarcastique", " satanique", " desespere", " luciferien", " malefique", " diabolique"};
 	
 	/**
@@ -64,5 +64,24 @@ public class Monde {
 	public static void afficherInformations() {
 		System.out.println(personnageFactory());
 	}
-
+	
+	/**
+	 * Méthode représentant un combat entre un monstre et un personnage
+	 * @param personnage - personnage qui combat
+	 * @param monstre - monstre qui combat
+	 */
+	public static void combat(Personnage personnage, Monstre monstre) {
+		int i = 1;
+		// Système de tour : si nombre impair Monstre / si nombre pair Personnage
+		while(personnage.estVivant() && monstre.estVivant()) {
+			if(i % 2 == 1) { // Au tour du Monstre
+				personnage.pointDeVie -= monstre.degat;
+				System.out.println("Le monstre "+ monstre.nom +" attaque, et retire "+ monstre.degat +" pts de vie, il reste "+ personnage.pointDeVie +" pts de vie a "+ personnage.nom);
+			} else { // Au tour du Personnage
+				monstre.pointDeVie -= personnage.degat;
+				System.out.println("Le personnage "+ personnage.nom +" attaque, et retire "+ personnage.degat +" pts de vie, il reste "+ monstre.pointDeVie +" pts de vie a "+ monstre.nom);
+			}
+			i++;
+		}
+	}
 }
