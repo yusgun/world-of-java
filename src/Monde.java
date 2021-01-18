@@ -16,16 +16,6 @@ public class Monde {
 	}
 	
 	/**
-	 * Génère un nombre au hasard entre [min, max]
-	 * @param min nombre mini
-	 * @param max nombre maxi
-	 * @return nombre généré
-	 */
-	public static int randomInt(int min, int max) {
-		return (int)(Math.random() * ((max - min) + 1)) + min;
-	}
-	
-	/**
 	 * Créer un personnage avec tous ses attributs. 
 	 * Demande a l'utilisateur d'entrer le nom du personnage.
 	 * retour: une instance de la classe Personnage correctement instancié.
@@ -48,7 +38,7 @@ public class Monde {
 	 */
 	public static Monstre MonstreFactory() {
 	    // Creer un string pour le nom de votre monstre
-		String nom = debutNom[randomInt(0, debutNom.length-1)] + finNom[randomInt(0, finNom.length-1)];
+		String nom = debutNom[Random.randomInt(0, debutNom.length-1)] + finNom[Random.randomInt(0, finNom.length-1)];
 		int degat = 2;
 		int pointDeVie = 20;
 	    // Creer une instance Monstre avec sont constructeur complet
