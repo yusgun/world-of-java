@@ -2,7 +2,7 @@
  * Classe représentant un Monstre
  * @author yusuf
  */
-public class Monstre extends Personnage {
+public class Monstre extends Combattant {
 
 	/**
 	 * Constructeur vide
