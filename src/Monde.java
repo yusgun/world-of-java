@@ -125,4 +125,37 @@ public class Monde {
 		}
 		return personnages;
 	}
+	
+	/**
+	 * Menu d'affichage avec intéraction
+	 */
+	public static void genese() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("---***--- Bonjour/Bonsoir ---***---");
+		System.out.println("Choisir une option: ");
+		System.out.println("1: Lancer un combat 1vs1");
+		System.out.println("2: Lancer un combat de groupe");
+		System.out.println("3: One vs World Hardcore Edition");
+		System.out.println("4: Informations");
+		System.out.println("-----------------------------------");
+		System.out.print(">>> ");
+		int choix = scanner.nextInt();
+		switch (choix) {
+			case 1:
+				
+				break;
+			case 2:
+				
+				break;
+			case 3:
+				
+				break;
+			case 4:
+				
+				break;
+			default:
+				System.err.println("Erreur de saisie, veuillez reessayer");
+				break;
+		}
+	}
 }
