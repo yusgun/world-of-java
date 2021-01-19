@@ -130,31 +130,37 @@ public class Monde {
 	 * Menu d'affichage avec intéraction
 	 */
 	public static void genese() {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("---***--- Bonjour/Bonsoir ---***---");
-		System.out.println("Choisir une option: ");
-		System.out.println("1: Lancer un combat 1vs1");
-		System.out.println("2: Lancer un combat de groupe");
-		System.out.println("3: One vs World Hardcore Edition");
-		System.out.println("4: Informations");
-		System.out.println("-----------------------------------");
-		System.out.print(">>> ");
-		int choix = scanner.nextInt();
+		int choix = 0;
+		boolean goodChoix = false;
+		while(!goodChoix) {
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("---***--- Bonjour/Bonsoir ---***---");
+			System.out.println("Choisir une option: ");
+			System.out.println("1: Lancer un combat 1vs1");
+			System.out.println("2: Lancer un combat de groupe");
+			System.out.println("3: One vs World Hardcore Edition");
+			System.out.println("4: Informations");
+			System.out.println("-----------------------------------");
+			System.out.print(">>> ");
+			choix = scanner.nextInt();
+			if(choix > 0 && choix < 5) {
+				goodChoix = true;
+			} else {
+				System.err.println("Erreur de saisie, veuillez reessayer");
+			}
+		}
 		switch (choix) {
 			case 1:
-				
+	
 				break;
 			case 2:
-				
+	
 				break;
 			case 3:
-				
+	
 				break;
 			case 4:
-				
-				break;
-			default:
-				System.err.println("Erreur de saisie, veuillez reessayer");
+	
 				break;
 		}
 	}
