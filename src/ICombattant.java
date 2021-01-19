@@ -3,7 +3,16 @@
  * @author yusuf
  */
 public interface ICombattant {
+	/**
+	 * Permet au combattant d'attaquer son adversaire
+	 * @param adversaire à attaquer
+	 */
 	public void attaquer(ICombattant adversaire);
+	
+	/**
+	 * Permet au combattant de défendre
+	 * @param dégats à encaisser
+	 */
 	public void defendre(int degats);
 	
 	// Getters et setters

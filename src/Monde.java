@@ -4,14 +4,14 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.sound.sampled.AudioFileFormat;
-
 public class Monde {
 	
-	// Nom
+	// attributs
 	public static Hashtable<String, Classe> dictionnaires = new Hashtable<String, Classe>() {{ put("saiyen", new Classe("saiyen", Arrays.asList(new BasicAttaque("BigBang", "", 2, 90), new BasicAttaque("Kamehameha", "", 4, 65), new BasicAttaque("Genkidama", "", 15, 20)))); put("terrien", new Classe("terrien", Arrays.asList(new BasicAttaque("Boule de feu", "", 2, 90), new BasicAttaque("Kamehameha", "", 4, 65))));  }};
+	public static List<Monstre> monstres = new ArrayList<Monstre>() {{ add(new Monstre(20, 2, "Lockness")); add(new Monstre(20, 2, "Dinosaure")); }};
 	public static String[] debutNom = {"Ane", "Baleine", "Belette", "Blaireau", "Buffle", "Bison", "Cerf", "Castor", "Chacal", "Chameau"};
 	public static String[] finNom = {" mechant", " de feu", " de la mort", " demoniaque", " sarcastique", " satanique", " desespere", " luciferien", " malefique", " diabolique"};
+	
 	
 	/**
 	 * Générer un nom via la saisie de l'utilisateur au clavier
@@ -88,7 +88,41 @@ public class Monde {
 		System.out.println("Score { " + personnage.getNom() +":["+personnage.getPointDeVie()+"] | "+monstre.getNom()+":["+monstre.getPointDeVie()+"] }");
 	}
 	
+	/**
+	 * Permet de récupérer la race du personnage
+	 * @param nom - nom de la race
+	 * @return element du dictionnaire
+	 */
 	public static Classe getClasse(String nom) {
 		return dictionnaires.get(nom);
+	}
+	
+	/**
+	 * Génère un groupe de Monstre
+	 * @param nombre de Monstre à créer
+	 * @return groupe de monstre crée
+	 */
+	public List<Monstre> creationGroupeMonstres(int nombre){
+		List<Monstre> monstres = new ArrayList<Monstre>();
+		for(int i=0; i<nombre; i++) {
+			monstres.add(new Monstre(20, 2, "Monstre"+(++i)));
+		}
+		return monstres;
+	}
+	
+	/**
+	 * Génère un groupe de Monstre
+	 * @param nombre de Monstre à créer
+	 * @return groupe de monstre crée
+	 */
+	public List<Personnage> creationGroupePersonnages(int nombre){
+		List<Personnage> personnages = new ArrayList<Personnage>();
+		for(int i=0; i<nombre; i++) {
+			int random = Random.randomInt(0, 1);
+			String race = (random == 0) ? "saiyen" : "terrien";
+			Classe classe = getClasse(race);
+			personnages.add(new Personnage(20, 2, "Personnage"+(++i), classe));
+		}
+		return personnages;
 	}
 }
