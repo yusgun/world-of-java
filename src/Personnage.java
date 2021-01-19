@@ -2,7 +2,7 @@
  * Classe représentant un personnage
  * @author yusuf
  */
-public class Personnage extends AbstractCombattant {
+public class Personnage extends AbstractCombattant{
 	
 	private Classe classe;
 	

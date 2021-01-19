@@ -9,8 +9,11 @@ import java.util.List;
 public class Groupe extends AbstractCombattant{
 	
 	// Liste de combattant
-	private List<ICombattant> combattants = new ArrayList<ICombattant>();
+	private List<ICombattant> combattants;
 	
+	public Groupe() {
+		this.combattants = new ArrayList<ICombattant>();
+	}
 	/**
 	 * Permet de choisir un combattant au hasard
 	 * @return Combattant à attaquer par la suite
@@ -49,5 +52,12 @@ public class Groupe extends AbstractCombattant{
 		return mort;
 	}
 
+	/**
+	 * Setter pour la liste de combattant 
+	 * @param liste à ajouter
+	 */
+	public void setCombattants(List<ICombattant> liste) {
+		this.combattants = liste;
+	}
 
 }

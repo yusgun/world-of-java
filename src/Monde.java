@@ -1,8 +1,11 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Scanner;
+
+import sun.tools.tree.ThisExpression;
 
 public class Monde {
 	
@@ -50,7 +53,7 @@ public class Monde {
 	 * Créer un personnage avec tous ses attributs. 
 	 * @return le Monstre crée
 	 */
-	public static Monstre MonstreFactory() {
+	public static Monstre monstreFactory() {
 	    // Creer un string pour le nom de votre monstre
 		String nom = debutNom[Random.randomInt(0, debutNom.length-1)] + finNom[Random.randomInt(0, finNom.length-1)];
 		int degat = 2;
@@ -102,7 +105,7 @@ public class Monde {
 	 * @param nombre de Monstre à créer
 	 * @return groupe de monstre crée
 	 */
-	public List<Monstre> creationGroupeMonstres(int nombre){
+	public static List<Monstre> creationGroupeMonstres(int nombre){
 		List<Monstre> monstres = new ArrayList<Monstre>();
 		for(int i=0; i<nombre; i++) {
 			monstres.add(new Monstre(20, 2, "Monstre"+(++i)));
@@ -115,7 +118,7 @@ public class Monde {
 	 * @param nombre de Monstre à créer
 	 * @return groupe de monstre crée
 	 */
-	public List<Personnage> creationGroupePersonnages(int nombre){
+	public static List<Personnage> creationGroupePersonnages(int nombre){
 		List<Personnage> personnages = new ArrayList<Personnage>();
 		for(int i=0; i<nombre; i++) {
 			int random = Random.randomInt(0, 1);
@@ -128,8 +131,9 @@ public class Monde {
 	
 	/**
 	 * Menu d'affichage avec intéraction
+	 * @throws IOException 
 	 */
-	public static void genese() {
+	public static void genese(){
 		int choix = 0;
 		boolean goodChoix = false;
 		while(!goodChoix) {
@@ -151,7 +155,7 @@ public class Monde {
 		}
 		switch (choix) {
 			case 1:
-	
+				combat1vs1();
 				break;
 			case 2:
 	
@@ -164,4 +168,41 @@ public class Monde {
 				break;
 		}
 	}
+	
+	/**
+	 * Créer un combat 1 vs 1
+	 */
+	public static void combat1vs1() {
+		Personnage personnage = personnageFactory();
+		Monstre monstre = monstreFactory();
+		combat(personnage, monstre);
+	}
+	
+	public static int demanderNombre() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Nombre de combattant(s) dans chaque groupe: ");
+		return scanner.nextInt();
+	}
+	
+	/**
+	 * Créer un combat en groupe
+	 */
+	public static void combatGroupe() {
+
+
+	}
+	
+	/**
+	 * Créer un combat solo
+	 * @param taille du groupe ennemi
+	 */
+	public static void combatSolo() {
+		int choix = demanderNombre();
+		List<Personnage> personnages = creationGroupePersonnages(choix);
+		List<Monstre> monstres = creationGroupeMonstres(choix);
+		int randomPersonnage = Random.randomInt(0, personnages.size()-1);
+		int randomMonstre = Random.randomInt(0, monstres.size()-1);
+		combat(personnages.get(randomPersonnage), monstres.get(randomMonstre));
+	}
+	
 }
